@@ -1,4 +1,6 @@
 [build]
   base = "caayara-fixer-pro-main"
   command = "npm run build"
-  publish = ".output/public"
+  # Nitro's `netlify` preset emits static assets to `dist/` and the SSR handler to
+  # `.netlify/functions-internal/` (auto-detected by Netlify), so publish `dist`.
+  publish = "dist"
