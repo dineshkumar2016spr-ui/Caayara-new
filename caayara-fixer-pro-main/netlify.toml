@@ -1,0 +1,4 @@
+[build]
+  base = "caayara-fixer-pro-main"
+  command = "npm run build"
+  publish = ".output/public"
