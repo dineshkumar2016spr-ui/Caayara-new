@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+/* ==========================================
+   GLOBAL RESET & THEME BASE
+   ========================================== */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: #0c0c0c;
+    color: #d7e2ea;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ==========================================
+   CUSTOM DARK SCROLLBAR
+   ========================================== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0c0c0c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7e22ce;
+}
+
+/* ==========================================
+   VISUAL UTILITIES (GLASS & GLOW EFFECTS)
+   ========================================== */
+.glass-panel {
+  background: rgba(20, 20, 20, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel:hover {
+  border-color: rgba(168, 85, 247, 0.4);
+  box-shadow: 0 0 30px -5px rgba(168, 85, 247, 0.2);
+}
+
+.purple-glow {
+  box-shadow: 0 0 50px -10px rgba(147, 51, 234, 0.3);
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
+}
