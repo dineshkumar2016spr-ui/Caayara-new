@@ -1,8 +1,6 @@
 {
   "dependencies": {
-    "react-router-dom": "^7.18.4"
-  },
-  "devDependencies": {
+    "react-router-dom": "^7.18.4",
     "vinxi": "^0.5.11"
   }
 }
