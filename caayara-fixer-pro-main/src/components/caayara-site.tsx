@@ -1104,8 +1104,11 @@ export default function CaayaraMobilesWebsite() {
   onClick={(e) => {
     e.preventDefault();
     if ((window as any).vapiSDK) {
-      (window as any).vapiSDK.start("91069644-060f-4443-8f6d-ae99327a8204");
-    }
+  (window as any).vapiSDK.run({
+    apiKey: "559be8c0-3973-451c-9320-fbd97156acd6",
+    assistant: "91069644-060f-4443-8f6d-ae99327a8204",
+  });
+}
   }}
   className="px-8 py-4 rounded-full bg-white/10 border border-white/20 text-white font-medium text-xs uppercase tracking-widest ..."
 >
@@ -1163,9 +1166,12 @@ export default function CaayaraMobilesWebsite() {
   href="#"
   onClick={(e) => {
     e.preventDefault();
-    if ((window as any).vapiSDK) {
-      (window as any).vapiSDK.start("91069644-060f-4443-8f6d-ae99327a8204");
-    }
+   if ((window as any).vapiSDK) {
+  (window as any).vapiSDK.run({
+    apiKey: "559be8c0-3973-451c-9320-fbd97156acd6",
+    assistant: "91069644-060f-4443-8f6d-ae99327a8204",
+  });
+}
   }}
   className="flex-1 py-3 bg-white/10 rounded-xl text-center text-white flex items-center justify-center gap-1.5 active:scale-95 transition-transform"
 >
