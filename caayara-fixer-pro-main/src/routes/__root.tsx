@@ -123,18 +123,3 @@ function RootComponent() {
     </RootShell>
   );
 }
-        (window as any).vapiSDK.run({
-          apiKey: apiKey,
-          assistant: assistant,
-        });
-      }
-    };
-    document.body.appendChild(script);
-  }, []);
-  return (
-    <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
-    </QueryClientProvider>
-  );
-}
