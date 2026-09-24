@@ -1,10 +1,6 @@
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { Link } from "@tanstack/react-router";
 import logo from '../assets/cayara logo without back ground.png';
-import batteryImg from '../assets/battery.jpeg';
-import chargingImg from '../assets/charging port.jpeg';
-import mbRepairImg from '../assets/MB repair.jpeg';
-import screenRepairImg from '../assets/screen epair.jpeg';
-import wdRepairImg from '../assets/WD repair.jpeg';
 import {
   Phone,
   MessagesSquare,
@@ -23,9 +19,6 @@ import {
   Menu,
   Navigation,
   ShieldAlert,
-  HelpCircle,
-  Clock,
-  Sparkles,
 } from "lucide-react";
 import {
   motion,
@@ -342,17 +335,17 @@ export default function CaayaraMobilesWebsite() {
   ];
 
   // 10 Services List
-  const serviceItems = [
-    { num: "01", name: "SCREEN REPLACEMENT", desc: "Broken, cracked or damaged smartphone screen repair and replacement." },
-    { num: "02", name: "BATTERY REPLACEMENT", desc: "Battery-related issues including rapid draining and poor battery performance." },
-    { num: "03", name: "CHARGING REPAIR", desc: "Diagnosis and repair for charging ports and charging-related problems." },
-    { num: "04", name: "SOFTWARE SERVICE", desc: "Software-related issues, system problems and performance-related service." },
-    { num: "05", name: "MOTHERBOARD / IC REPAIR", desc: "Hardware-level diagnosis and repair for motherboard and IC-related issues." },
-    { num: "06", name: "CAMERA REPAIR", desc: "Repair and diagnosis for smartphone camera problems." },
-    { num: "07", name: "SPEAKER & MICROPHONE", desc: "Solutions for speaker, microphone and audio-related issues." },
-    { num: "08", name: "WATER DAMAGE", desc: "Assessment and repair support for water or liquid-damaged phones." },
-    { num: "09", name: "BACK GLASS / BODY REPAIR", desc: "Repair support for damaged phone bodies and back glass." },
-    { num: "10", name: "GENERAL MOBILE REPAIR", desc: "Diagnosis and repair for other smartphone problems." },
+ const serviceItems = [
+    { num: "01", slug: "screen-replacement", name: "SCREEN REPLACEMENT", desc: "Broken, cracked or damaged smartphone screen repair and replacement." },
+    { num: "02", slug: "battery-replacement", name: "BATTERY REPLACEMENT", desc: "Battery-related issues including rapid draining and poor battery performance." },
+    { num: "03", slug: "charging-repair", name: "CHARGING REPAIR", desc: "Diagnosis and repair for charging ports and charging-related problems." },
+    { num: "04", slug: "software-service", name: "SOFTWARE SERVICE", desc: "Software-related issues, system problems and performance-related service." },
+    { num: "05", slug: "motherboard-repair", name: "MOTHERBOARD / IC REPAIR", desc: "Hardware-level diagnosis and repair for motherboard and IC-related issues." },
+    { num: "06", slug: "camera-repair", name: "CAMERA REPAIR", desc: "Repair and diagnosis for smartphone camera problems." },
+    { num: "07", slug: "speaker-microphone-repair", name: "SPEAKER & MICROPHONE", desc: "Solutions for speaker, microphone and audio-related issues." },
+    { num: "08", slug: "water-damage-repair", name: "WATER DAMAGE", desc: "Assessment and repair support for water or liquid-damaged phones." },
+    { num: "09", slug: "back-glass-body-repair", name: "BACK GLASS / BODY REPAIR", desc: "Repair support for damaged phone bodies and back glass." },
+    { num: "10", slug: "general-mobile-repair", name: "GENERAL MOBILE REPAIR", desc: "Diagnosis and repair for other smartphone problems." },
   ];
 
   // Stacking Repair Cards
@@ -426,16 +419,16 @@ export default function CaayaraMobilesWebsite() {
         {/* NAVBAR */}
         ⁠<header className="relative z-30 flex items-center justify-between w-full">
             <FadeIn delay={0} y={-20}>
-              <a href="#" className="flex items-center">⁠
+              <Link to="/" className="flex items-center">
                  <img src={logo} alt="Caayara Logo" className="h-20 sm:h-24 md:h-28 w-auto object-contain" />
-                 </a>
-              </FadeIn>
+                 </Link>
+</FadeIn>
           <FadeIn y={-20} delay={0.1}>
             <nav className="hidden md:flex items-center gap-8 font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] text-[#D7E2EA]">
-              <a href="#about" className="hover:opacity-70 transition-opacity duration-200">About</a>
-              <a href="#services" className="hover:opacity-70 transition-opacity duration-200">Services</a>
-              <a href="#repairs" className="hover:opacity-70 transition-opacity duration-200">Repairs</a>
-              <a href="#contact" className="hover:opacity-70 transition-opacity duration-200">Contact</a>
+              <Link to="/about" onClick={() => setMobileMenuOpen(false)}>About</Link>
+              <Link to="/services" onClick={() => setMobileMenuOpen(false)}>Services</Link>
+              <Link to="/repairs" onClick={() => setMobileMenuOpen(false)}>Repairs</Link>
+             <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
             </nav>
           </FadeIn>
 
@@ -467,10 +460,10 @@ export default function CaayaraMobilesWebsite() {
               exit={{ opacity: 0, y: -20 }}
               className="absolute top-20 left-6 right-6 z-50 bg-[#141414] border border-white/15 rounded-3xl p-6 flex flex-col gap-4 font-medium uppercase tracking-wider text-base text-[#D7E2EA] shadow-2xl md:hidden"
             >
-              <a href="#about" onClick={() => setMobileMenuOpen(false)}>About</a>
-              <a href="#services" onClick={() => setMobileMenuOpen(false)}>Services</a>
-              <a href="#repairs" onClick={() => setMobileMenuOpen(false)}>Repairs</a>
-              <a href="#contact" onClick={() => setMobileMenuOpen(false)}>Contact</a>
+              <Link to="/about" onClick={() => setMobileMenuOpen(false)}>About</Link>
+<Link to="/services" onClick={() => setMobileMenuOpen(false)}>Services</Link>
+<Link to="/repairs" onClick={() => setMobileMenuOpen(false)}>Repairs</Link>
+<Link to="/contact" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
               <div className="pt-4 border-t border-white/10 flex flex-col gap-2">
                 <a href={TEL_LINK} className="py-3 text-center bg-white/10 rounded-xl text-xs font-bold">CALL NOW</a>
                 <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="py-3 text-center bg-emerald-600 text-white rounded-xl text-xs font-bold">WHATSAPP US</a>
@@ -512,7 +505,9 @@ export default function CaayaraMobilesWebsite() {
 
           {/* HERO CTA BUTTONS */}
           <FadeIn y={20} delay={0.5} className="flex flex-wrap items-center justify-center gap-3">
-            <ContactButton label="GET YOUR PHONE REPAIRED" onClick={scrollToEnquiry} />
+           <Link to="/contact">
+  <ContactButton label="GET YOUR PHONE REPAIRED" />
+</Link>
             <a
               href={TEL_LINK}
               className="px-6 py-3 rounded-full bg-white/5 border border-white/20 text-white font-medium text-xs uppercase tracking-widest hover:bg-white/10 transition-all flex items-center gap-2"
@@ -536,292 +531,7 @@ export default function CaayaraMobilesWebsite() {
         </div>
       </section>
 
-      {/* ==========================================
-          2. MARQUEE SECTION
-      ========================================== */}
-      <section className="bg-[#0C0C0C] pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden">
-        <div className="space-y-4">
-          {/* Row 1 - Right Moving Animation */}
-          <div className="flex w-max gap-3 animate-[marqueeRight_35s_linear_infinite] hover:[animation-play-state:paused]">
-            {[...marqueeTilesRow1, ...marqueeTilesRow1, ...marqueeTilesRow1].map((tile, idx) => {
-              const Icon = tile.icon;
-              return (
-                <div
-                  key={idx}
-                  className="w-[300px] sm:w-[420px] h-[180px] sm:h-[270px] rounded-2xl bg-gradient-to-br from-[#181528] to-[#0A0A12] border border-white/15 p-6 flex flex-col justify-between shrink-0 hover:border-purple-500/50 transition-all group"
-                  style={{ willChange: "transform" }}
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="p-3 rounded-xl bg-purple-950/60 border border-purple-500/30 text-purple-400 group-hover:scale-110 transition-transform">
-                      <Icon className="w-6 h-6 sm:w-8 sm:h-8" />
-                    </div>
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-white/40 border border-white/10 px-2.5 py-1 rounded-full">
-                      SERVICE TILE
-                    </span>
-                  </div>
-                  <div>
-                    <h3 className="text-lg sm:text-2xl font-bold text-white uppercase tracking-tight">{tile.title}</h3>
-                    <p className="text-xs sm:text-sm font-mono text-purple-300/80 uppercase">{tile.sub}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Row 2 - Left Moving Animation */}
-          <div className="flex w-max gap-3 animate-[marqueeLeft_35s_linear_infinite] hover:[animation-play-state:paused]">
-            {[...marqueeTilesRow2, ...marqueeTilesRow2, ...marqueeTilesRow2].map((tile, idx) => {
-              const Icon = tile.icon;
-              return (
-                <div
-                  key={idx}
-                  className="w-[300px] sm:w-[420px] h-[180px] sm:h-[270px] rounded-2xl bg-gradient-to-br from-[#12121D] to-[#08080E] border border-white/15 p-6 flex flex-col justify-between shrink-0 hover:border-indigo-500/50 transition-all group"
-                  style={{ willChange: "transform" }}
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="p-3 rounded-xl bg-indigo-950/60 border border-indigo-500/30 text-indigo-400 group-hover:scale-110 transition-transform">
-                      <Icon className="w-6 h-6 sm:w-8 sm:h-8" />
-                    </div>
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-white/40 border border-white/10 px-2.5 py-1 rounded-full">
-                      HYDERABAD
-                    </span>
-                  </div>
-                  <div>
-                    <h3 className="text-lg sm:text-2xl font-bold text-white uppercase tracking-tight">{tile.title}</h3>
-                    <p className="text-xs sm:text-sm font-mono text-indigo-300/80 uppercase">{tile.sub}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        <style>{`
-          @keyframes marqueeRight {
-            0% { transform: translateX(-50%); }
-            100% { transform: translateX(0%); }
-          }
-          @keyframes marqueeLeft {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); }
-          }
-        `}</style>
-      </section>
-
-      {/* ==========================================
-          3. ABOUT SECTION
-      ========================================== */}
-      <section id="about" className="min-h-screen px-5 sm:px-8 md:px-10 py-20 relative flex flex-col items-center justify-center bg-[#0C0C0C]">
-        {/* Floating 3D Decorative Objects in Corners */}
-        <div className="absolute top-12 left-10 p-4 rounded-3xl bg-purple-950/30 border border-purple-500/20 blur-[1px] hidden lg:block animate-bounce">
-          <Smartphone className="w-12 h-12 text-purple-400" />
-        </div>
-        <div className="absolute top-20 right-12 p-4 rounded-3xl bg-indigo-950/30 border border-indigo-500/20 blur-[1px] hidden lg:block">
-          <Battery className="w-12 h-12 text-emerald-400" />
-        </div>
-        <div className="absolute bottom-16 left-16 p-4 rounded-3xl bg-pink-950/30 border border-pink-500/20 blur-[1px] hidden lg:block">
-          <Cpu className="w-12 h-12 text-pink-400" />
-        </div>
-        <div className="absolute bottom-20 right-16 p-4 rounded-3xl bg-blue-950/30 border border-blue-500/20 blur-[1px] hidden lg:block animate-pulse">
-          <Wrench className="w-12 h-12 text-blue-400" />
-        </div>
-
-        <div className="max-w-4xl mx-auto text-center space-y-10 z-10">
-          <FadeIn>
-            <h2
-              className="hero-heading font-black uppercase leading-none tracking-tight text-center"
-              style={{ fontSize: "clamp(3rem, 10vw, 150px)" }}
-            >
-              ABOUT CAAYARA MOBILES
-            </h2>
-          </FadeIn>
-
-          <AnimatedText
-            text="Your phone is part of your everyday life. When something goes wrong, you need a repair service that understands the problem and focuses on getting it fixed properly. Caayara Mobiles provides mobile phone repair and service in Jagdish Market, Hyderabad, with a focus on proper diagnosis, repair quality and clear communication."
-            className="text-[#D7E2EA] font-medium leading-relaxed max-w-[560px] mx-auto uppercase"
-          />
-
-          <FadeIn delay={0.3} className="pt-8 flex flex-wrap items-center justify-center gap-4">
-            <ContactButton label="GET YOUR PHONE REPAIRED" onClick={scrollToEnquiry} />
-            <a
-              href={WA_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 rounded-full bg-emerald-600/30 border border-emerald-500/40 text-emerald-300 font-medium text-xs uppercase tracking-widest hover:bg-emerald-600/40 transition-all flex items-center gap-2"
-            >
-              <MessagesSquare className="w-4 h-4" /> WHATSAPP US
-            </a>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* ==========================================
-          4. SERVICES SECTION
-      ========================================== */}
-      <section
-        id="services"
-        className="bg-[#FFFFFF] text-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32"
-      >
-        <div className="max-w-7xl mx-auto">
-          <FadeIn>
-            <h2
-              className="font-black uppercase text-center text-[#0C0C0C] tracking-tight mb-16 sm:mb-20 md:mb-28"
-              style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}
-            >
-              SERVICES
-            </h2>
-          </FadeIn>
-
-          <div className="space-y-0">
-            {serviceItems.map((item, idx) => (
-              <FadeIn key={idx} delay={idx * 0.05} className="border-t border-black/15 py-8 sm:py-10 md:py-12">
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-baseline">
-                  {/* Number */}
-                  <div className="md:col-span-3">
-                    <span
-                      className="font-black text-[#0C0C0C] leading-none tracking-tighter"
-                      style={{ fontSize: "clamp(3rem, 10vw, 140px)" }}
-                    >
-                      {item.num}
-                    </span>
-                  </div>
-
-                  {/* Title */}
-                  <div className="md:col-span-4">
-                    <h3
-                      className="font-medium uppercase text-[#0C0C0C] tracking-tight"
-                      style={{ fontSize: "clamp(1rem, 2.2vw, 2.1rem)" }}
-                    >
-                      {item.name}
-                    </h3>
-                  </div>
-
-                  {/* Description */}
-                  <div className="md:col-span-5">
-                    <p
-                      className="font-light leading-relaxed text-[#0C0C0C] opacity-70 max-w-2xl"
-                      style={{ fontSize: "clamp(0.85rem, 1.6vw, 1.25rem)" }}
-                    >
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ==========================================
-          5. REPAIRS SECTION (STICKY STACKING CARDS)
-      ========================================== */}
-      <section
-        id="repairs"
-        className="bg-[#0C0C0C] text-[#D7E2EA] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-10 py-20 sm:py-24"
-      >
-        <div className="max-w-6xl mx-auto">
-          <FadeIn className="text-center mb-16">
-            <h2
-              className="hero-heading font-black uppercase tracking-tight"
-              style={{ fontSize: "clamp(2.5rem, 8vw, 120px)" }}
-            >
-              REPAIR EXPERTISE
-            </h2>
-          </FadeIn>
-
-          {/* STACKING STICKY CARDS CONTAINER */}
-          <div className="space-y-12">
-            {repairCards.map((card, idx) => {
-              const Icon = card.icon;
-              return (
-                <div
-                  key={idx}
-                  className="sticky top-24 md:top-32 h-auto min-h-[400px] sm:min-h-[460px] rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-6 sm:p-10 md:p-12 flex flex-col justify-between shadow-2xl transition-all"
-                  style={{
-                    transform: `scale(${1 - (repairCards.length - 1 - idx) * 0.02})`,
-                  }}
-                >
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <span className="text-xs font-mono uppercase tracking-widest text-purple-400 block mb-1">
-                        CATEGORY • {card.category}
-                      </span>
-                      <h3 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">
-                        {card.title}
-                      </h3>
-                    </div>
-                    <span className="text-4xl sm:text-6xl font-black font-mono text-white/20">
-                      {card.num}
-                    </span>
-                  </div>
-
-                  <div className="my-8 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-                    <div className="md:col-span-8 space-y-4">
-                      <p className="text-base sm:text-xl font-light leading-relaxed text-[#D7E2EA]/90 max-w-xl">
-                        {card.desc}
-                      </p>
-                      <div className="flex flex-wrap gap-2 pt-2">
-                        <span className="px-3 py-1 rounded-full bg-white/10 text-xs font-mono uppercase">Precision Tools</span>
-                        <span className="px-3 py-1 rounded-full bg-white/10 text-xs font-mono uppercase">Jagdish Market</span>
-                      </div>
-                    </div>
-                    <div className="md:col-span-4 flex justify-center md:justify-end">
-                      <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-3xl bg-gradient-to-br from-purple-900/40 to-indigo-900/40 border border-purple-500/30 flex items-center justify-center">
-                        <Icon className="w-14 h-14 sm:w-20 sm:h-20 text-purple-400" />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-white/10">
-                    <ContactButton label="GET YOUR PHONE REPAIRED" onClick={scrollToEnquiry} />
-                    <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="text-xs font-mono uppercase tracking-widest text-emerald-400 hover:underline flex items-center gap-1">
-                      <MessagesSquare className="w-4 h-4" /> WhatsApp Diagnostics
-                    </a>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ==========================================
-          6. COMMON PROBLEMS SECTION
-      ========================================== */}
-      <section className="bg-[#0C0C0C] py-20 px-5 sm:px-8 md:px-10 border-t border-white/10">
-        <div className="max-w-7xl mx-auto">
-          <FadeIn className="text-center mb-16 space-y-2">
-            <span className="text-xs font-mono uppercase tracking-widest text-purple-400">• Common Issues •</span>
-            <h2
-              className="hero-heading font-black uppercase tracking-tight"
-              style={{ fontSize: "clamp(2rem, 6vw, 90px)" }}
-            >
-              WHAT'S WRONG WITH YOUR PHONE?
-            </h2>
-          </FadeIn>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            {problemCards.map((problem, idx) => (
-              <FadeIn key={idx} delay={idx * 0.05} className="h-full">
-                <div className="bg-[#141414] border border-white/10 hover:border-purple-500/50 rounded-2xl p-6 h-full flex flex-col justify-between group transition-all hover:-translate-y-1">
-                  <div>
-                    <ShieldAlert className="w-6 h-6 text-purple-400 mb-3 group-hover:scale-110 transition-transform" />
-                    <h3 className="text-base font-bold text-white uppercase tracking-wider">{problem}</h3>
-                  </div>
-                  <button
-                    onClick={scrollToEnquiry}
-                    className="mt-6 text-xs font-bold uppercase tracking-widest text-purple-400 group-hover:text-purple-300 flex items-center justify-between border-t border-white/5 pt-3"
-                  >
-                    <span>GET IT CHECKED</span>
-                    <span>&rarr;</span>
-                  </button>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      
       {/* ==========================================
           7. REPAIR ENQUIRY SECTION
       ========================================== */}
@@ -1090,7 +800,9 @@ export default function CaayaraMobilesWebsite() {
           </p>
 
           <FadeIn delay={0.2} className="flex flex-wrap items-center justify-center gap-4 pt-4">
-            <ContactButton label="GET YOUR PHONE REPAIRED" onClick={scrollToEnquiry} />
+           <Link to="/contact">
+  <ContactButton label="GET YOUR PHONE REPAIRED" />
+</Link>
             <a
               href={WA_LINK}
               target="_blank"
@@ -1113,41 +825,45 @@ export default function CaayaraMobilesWebsite() {
           11. FOOTER
       ========================================== */}
       <footer className="bg-[#0C0C0C] py-16 px-5 sm:px-8 md:px-10 border-t border-white/10 text-xs text-[#D7E2EA]/60 font-mono">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
-          <div className="space-y-3">
-            <h3 className="text-base font-black text-white uppercase tracking-tighter">CAAYARA MOBILES</h3>
-            <p className="text-xs font-light text-white/50 uppercase">MOBILE REPAIR. DONE RIGHT.</p>
-          </div>
+  <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+    <div className="space-y-3">
+      <h3 className="text-base font-black text-white uppercase tracking-tighter">
+        CAAYARA MOBILES
+      </h3>
+      <p className="text-xs font-light text-white/50 uppercase">
+        MOBILE REPAIR. DONE RIGHT.
+      </p>
+    </div>
 
-          <div className="space-y-2">
-            <p className="font-bold text-white uppercase tracking-wider">Location</p>
-            <p className="font-light">Jagdish Market, Hyderabad, Telangana, India</p>
-          </div>
+    <div className="space-y-2">
+      <p className="font-bold text-white uppercase tracking-wider">Location</p>
+      <p className="font-light">Jagdish Market, Hyderabad, Telangana, India</p>
+    </div>
 
-          <div className="space-y-2">
-            <p className="font-bold text-white uppercase tracking-wider">Contact</p>
-            <p className="font-light">Phone / WhatsApp: {PHONE_NUMBER}</p>
-            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="text-emerald-400 block hover:underline">
-              WHATSAPP US
-            </a>
-          </div>
+    <div className="space-y-2">
+      <p className="font-bold text-white uppercase tracking-wider">Contact</p>
+      <p className="font-light">Phone / WhatsApp: {PHONE_NUMBER}</p>
+      <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="text-emerald-400 block hover:underline">
+        WHATSAPP US
+      </a>
+    </div>
 
-          <div className="space-y-2">
-            <p className="font-bold text-white uppercase tracking-wider">Navigation</p>
-            <div className="flex flex-col gap-1 uppercase">
-              <a href="#" className="hover:text-white">Home</a>
-              <a href="#about" className="hover:text-white">About</a>
-              <a href="#services" className="hover:text-white">Services</a>
-              <a href="#repairs" className="hover:text-white">Repairs</a>
-              <a href="#contact" className="hover:text-white">Contact</a>
-            </div>
-          </div>
-        </div>
+    <div className="space-y-2">
+      <p className="font-bold text-white uppercase tracking-wider">Navigation</p>
+      <div className="flex flex-col gap-1 uppercase">
+        <Link to="/" className="hover:text-white">Home</Link>
+       <Link to="/about" className="hover:text-white">About</Link>
+<Link to="/services" className="hover:text-white">Services</Link>
+<Link to="/repairs" className="hover:text-white">Repairs</Link>
+<Link to="/contact" className="hover:text-white">Contact</Link>
+      </div>
+    </div>
+  </div>
 
-        <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/5 text-center text-[10px] uppercase tracking-widest text-white/40">
-          ©️ 2026 Caayara Mobiles. All Rights Reserved.
-        </div>
-      </footer>
+  <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/5 text-center text-[10px] uppercase tracking-widest text-white/40">
+    © 2026 Caayara Mobiles. All Rights Reserved.
+  </div>
+</footer>
 
       {/* ==========================================
           12. MOBILE EXPERIENCE BOTTOM BAR
