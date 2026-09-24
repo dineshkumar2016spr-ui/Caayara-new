@@ -1099,12 +1099,18 @@ export default function CaayaraMobilesWebsite() {
             >
               <MessagesSquare className="w-4 h-4" /> WHATSAPP US
             </a>
-            <a
-              href={TEL_LINK}
-              className="px-8 py-4 rounded-full bg-white/10 border border-white/20 text-white font-medium text-xs uppercase tracking-widest hover:bg-white/20 transition-all flex items-center gap-2"
-            >
-              <Phone className="w-4 h-4 text-purple-400" /> CALL NOW
-            </a>
+           <a
+  href="#"
+  onClick={(e) => {
+    e.preventDefault();
+    if ((window as any).vapiSDK) {
+      (window as any).vapiSDK.start("91069644-060f-4443-8f6d-ae99327a8204");
+    }
+  }}
+  className="px-8 py-4 rounded-full bg-white/10 border border-white/20 text-white font-medium text-xs uppercase tracking-widest ..."
+>
+  <Phone className="w-4 h-4 text-purple-400" /> CALL NOW
+</a>
           </FadeIn>
         </div>
       </section>
@@ -1153,12 +1159,18 @@ export default function CaayaraMobilesWebsite() {
           12. MOBILE EXPERIENCE BOTTOM BAR
       ========================================== */}
       <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#0C0C0C]/95 backdrop-blur-lg border-t border-white/15 p-3 flex md:hidden items-center justify-around gap-2 text-[10px] font-bold uppercase tracking-wider">
-        <a
-          href={TEL_LINK}
-          className="flex-1 py-3 bg-white/10 rounded-xl text-center text-white flex items-center justify-center gap-1.5 active:scale-95 transition-transform"
-        >
-          <Phone className="w-3.5 h-3.5 text-purple-400" /> CALL
-        </a>
+       <a
+  href="#"
+  onClick={(e) => {
+    e.preventDefault();
+    if ((window as any).vapiSDK) {
+      (window as any).vapiSDK.start("91069644-060f-4443-8f6d-ae99327a8204");
+    }
+  }}
+  className="flex-1 py-3 bg-white/10 rounded-xl text-center text-white flex items-center justify-center gap-1.5 active:scale-95 transition-transform"
+>
+  <Phone className="w-3.5 h-3.5 text-purple-400" /> CALL
+</a>
         <a
           href={WA_LINK}
           target="_blank"
