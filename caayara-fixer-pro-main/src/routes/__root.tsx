@@ -114,7 +114,24 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+useEffect(() => {
+    const assistant = "91069644-060f-4443-8f6d-ae99327a8204";
+    const apiKey = "559be8c0-3973-451c-9320-fbd97156acd6";
 
+    const script = document.createElement("script");
+    script.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+    script.defer = true;
+    script.async = true;
+    script.onload = () => {
+      if ((window as any).vapiSDK) {
+        (window as any).vapiSDK.run({
+          apiKey: apiKey,
+          assistant: assistant,
+        });
+      }
+    };
+    document.body.appendChild(script);
+  }, []);
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
