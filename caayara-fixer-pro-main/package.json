@@ -4,11 +4,9 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "dev": "vinxi dev",
-    "build": "npx vinxi build",
-    "build:dev": "vinxi build --mode development",
-    "preview": "vinxi preview",
-    "start": "node .output/server/index.mjs",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
